@@ -1,0 +1,13 @@
+The game's goal is to destroy all the cakes at the map, controlling Princess Luna, before Princess Celestia eats them in a critical for her quantity. Celestia's durability is shown via a white bar on the left.
+
+Princess Luna can move to the left and right along a platform, teleport among platforms, shoot hornlaser along a platform, summon chickens, and apply protective shields on cakes.
+
+Choose action - RMB or 1-4 key (can be changed in the settings).
+Use action - LMB
+If an action cannot be used its icon is crossed out.
+Actions consumу mana, its amount is shown via a blue bar on the right.
+
+Additional rules:
+1. Princess Celestia cannot eat a cake protected with a shield.
+2. Princess Celestia cannot be on the same platform with a chicken. 
+3. Hornlaser is deadly for Princess Celesita.

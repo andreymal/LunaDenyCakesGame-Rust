@@ -1,0 +1,11 @@
+Оригинальная версия от tereshenkovav aka NTFS
+https://github.com/tereshenkovav/LunaDenyCakesGame
+
+Версия на Rust от andreymal
+https://github.com/andreymal/LunaDenyCakesGame-Rust
+
+Информация об используемых сторонних библиотеках есть в файле THIRDPARTY.html
+
+Права на Принцессу Луну и Принцессу Селестию принадлежат Hasbro
+
+Весь мир принадлежит пони

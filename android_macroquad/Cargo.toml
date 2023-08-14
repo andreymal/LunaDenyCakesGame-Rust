@@ -1,0 +1,30 @@
+[package]
+name = "luna_deny_cakes_game_android_macroquad"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+luna_deny_cakes_game = { path = "..", features = ["macroquad"] }
+cake_engine = { path = "../cake_engine", features = ["macroquad"] }
+anyhow = "1.0.71"
+
+# cargo-quad-apk не позволяет спрятать macroquad за feature-флагом,
+# поэтому и пришлось городить вот это вот всё
+macroquad = { path = "../macroquad" }
+
+[package.metadata.android]
+# Последняя часть должна совпадать с названием Rust-программы, иначе не сработает
+package_name = "org.andreymal.luna_deny_cakes_game_android_macroquad"
+label = "@string/app_name"
+res = "res"
+icon = "@mipmap/luna"
+
+android_version = 31
+target_sdk_version = 31
+min_sdk_version = 18
+
+assets = "../data/"
+
+[package.metadata.android.activity_attributes]
+"android:screenOrientation" = "userLandscape"
+"android:exported" = "true"

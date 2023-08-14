@@ -1,0 +1,11 @@
+Original version by tereshenkovav aka NTFS
+https://github.com/tereshenkovav/LunaDenyCakesGame
+
+Rust version by andreymal
+https://github.com/andreymal/LunaDenyCakesGame-Rust
+
+See THIRDPARTY.html for information about third-party libraries
+
+Rights to Pricess Celestia and Princess Luna belong to Hasbro
+
+All world belongs to ponies

@@ -1,0 +1,51 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 623e553..8b3e068 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -26,7 +26,7 @@ opt-level = 3
+ all-features = true
+ 
+ [dependencies]
+-miniquad = { version = "=0.4.0-alpha.6", features = ["log-impl"] }
++miniquad = { path = "../miniquad", features = ["log-impl"] }
+ quad-rand = "0.2.1"
+ glam = {version = "0.21", features = ["scalar-math"] }
+ image = { version = "0.24", default-features = false, features = ["png", "tga"] }
+diff --git a/src/audio.rs b/src/audio.rs
+index c76b6cc..e24e863 100644
+--- a/src/audio.rs
++++ b/src/audio.rs
+@@ -93,6 +93,15 @@ impl Drop for QuadSndSoundGuarded {
+ #[derive(Clone)]
+ pub struct Sound(Arc<QuadSndSound>);
+ 
++// https://github.com/not-fl3/macroquad/issues/628
++impl Drop for Sound {
++    fn drop(&mut self) {
++        if Arc::strong_count(&self.0) < 2 {
++            self.0.delete(&get_context().audio_context.native_ctx);
++        }
++    }
++}
++
+ impl std::fmt::Debug for Sound {
+     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+         f.debug_struct("Sound").finish()
+diff --git a/src/text/atlas.rs b/src/text/atlas.rs
+index b269898..8229682 100644
+--- a/src/text/atlas.rs
++++ b/src/text/atlas.rs
+@@ -32,6 +32,13 @@ pub struct Atlas {
+     unique_id: u64,
+ }
+ 
++// https://github.com/not-fl3/macroquad/issues/627
++impl Drop for Atlas {
++    fn drop(&mut self) {
++        get_quad_context().delete_texture(self.texture);
++    }
++}
++
+ impl Atlas {
+     // pixel gap between glyphs in the atlas
+     const GAP: u16 = 2;

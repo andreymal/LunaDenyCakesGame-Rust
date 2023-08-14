@@ -1,0 +1,30 @@
+diff --git a/java/MainActivity.java b/java/MainActivity.java
+index b29d577..8e17a74 100644
+--- a/java/MainActivity.java
++++ b/java/MainActivity.java
+@@ -243,8 +243,10 @@ public class MainActivity extends Activity {
+                     View decorView = getWindow().getDecorView();
+ 
+                     if (fullscreen) {
+-                        getWindow().setFlags(LayoutParams.FLAG_LAYOUT_NO_LIMITS, LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+-                        getWindow().getAttributes().layoutInDisplayCutoutMode = LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
++                        if (Build.VERSION.SDK_INT >= 28) { // https://github.com/not-fl3/miniquad/issues/328#issuecomment-1666944825
++                            getWindow().setFlags(LayoutParams.FLAG_LAYOUT_NO_LIMITS, LayoutParams.FLAG_LAYOUT_NO_LIMITS);
++                            getWindow().getAttributes().layoutInDisplayCutoutMode = LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
++                        }
+                         if (Build.VERSION.SDK_INT >= 30) {
+                             getWindow().setDecorFitsSystemWindows(false);
+                         } else {
+diff --git a/src/lib.rs b/src/lib.rs
+index 1f8456d..1fd75e2 100644
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -5,7 +5,7 @@ pub mod conf;
+ mod event;
+ pub mod fs;
+ pub mod graphics;
+-mod native;
++pub mod native; // https://github.com/not-fl3/miniquad/issues/402
+ 
+ #[cfg(feature = "log-impl")]
+ pub mod log;

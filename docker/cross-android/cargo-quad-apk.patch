@@ -1,0 +1,13 @@
+diff --git a/src/ops/build.rs b/src/ops/build.rs
+index f219bd2..756f909 100644
+--- a/src/ops/build.rs
++++ b/src/ops/build.rs
+@@ -269,7 +269,7 @@ fn build_apks(
+         // otherwise "Type `java.lang.System` was not found" error
+         d8_cmd.arg("--no-desugaring");
+         d8_cmd.arg("--min-api")
+-            .arg("26");
++            .arg(config.min_sdk_version.to_string()); // https://github.com/not-fl3/miniquad/issues/328#issuecomment-1666944825
+ 
+         d8_cmd.cwd(&target_directory).exec()?;
+

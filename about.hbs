@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Third Party Licenses</title>
+    <style>
+        body {
+            background: #f5f5f5;
+            color: black;
+        }
+        .container {
+            font-family: sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .intro {
+            text-align: center;
+        }
+        .licenses-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        .license-used-by {
+            margin-top: -10px;
+        }
+        .license-text {
+            max-height: 200px;
+            overflow-y: scroll;
+            white-space: pre-wrap;
+            background: white;
+            padding: 4px;
+        }
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #333;
+                color: white;
+            }
+            a {
+                color: skyblue;
+            }
+            .license-text {
+                background: #444;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <div class="intro">
+            <h1>Third Party Licenses</h1>
+            <p>This page lists the licenses of the projects used in luna_deny_cakes_game.</p>
+        </div>
+
+        <h2>Overview of licenses:</h2>
+        <ul class="licenses-overview">
+            {{#each overview}}
+            <li><a href="#{{id}}">{{name}}</a> ({{count}})</li>
+            {{/each}}
+        </ul>
+
+        <h2>All license text:</h2>
+        <ul class="licenses-list">
+            {{#each licenses}}
+            <li class="license">
+                <h3 id="{{id}}">{{name}}</h3>
+                <h4>Used by:</h4>
+                <ul class="license-used-by">
+                    {{#each used_by}}
+                    <li><a href="{{#if crate.repository}}{{crate.repository}}{{else}}https://crates.io/crates/{{crate.name}}{{/if}}">{{crate.name}} {{crate.version}}</a></li>
+                    {{/each}}
+                </ul>
+                <pre class="license-text">{{text}}</pre>
+            </li>
+            {{/each}}
+        </ul>
+
+        <h2>Other</h2>
+
+        {{! https://github.com/EmbarkStudios/cargo-about/issues/16 }}
+        <h3>The Rust Standard Library</h3>
+        <p><A href="https://github.com/rust-lang/rust/tree/master/library">The Rust Standard Library</a> is dual-licensed under <a href="#MIT">MIT</a> or <a href="#Apache-2.0">Apache License 2.0</a>.</p>
+
+        <h3>SFML dependencies</h3>
+        <ul>
+            <li>libstdc++-6.dll and libgcc_s_seh-1.dll are parts of GCC 12.2.0, licensed under <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GPLv3</a> with <a href="https://www.gnu.org/licenses/gcc-exception-3.1.en.html">GCC Runtime Library Exception</a> and taken from <a href="https://packages.debian.org/bookworm/gcc-mingw-w64-x86-64-win32-runtime">Debian</a>.</li>
+            <li><a href="https://freetype.org/">FreeType</a> — <a href="https://gitlab.freedesktop.org/freetype/freetype/-/blob/master/docs/FTL.TXT">The Freetype Project License</a>.</li>
+            <li><a href="https://github.com/kcat/openal-soft">OpenAL Soft</a> — <a href="https://www.gnu.org/licenses/old-licenses/lgpl-2.0.en.html">LGPLv2</a>.</li>
+            <li><a href="https://github.com/xiph/flac">libFLAC</a>, <a href="https://gitlab.xiph.org/xiph/ogg">libogg</a> and <a href="https://gitlab.xiph.org/xiph/vorbis">libvorbis</a> — <a href="#BSD-3-Clause">BSD 3-Clause "New" or "Revised" License</a>.</li>
+        </ul>
+
+        <h3>Liberation Fonts</h3>
+        <p>LiberationSans-Regular.ttf is part of <a href="https://github.com/liberationfonts/liberation-fonts">Liberation Fonts</a> and licensed under <a href="https://github.com/liberationfonts/liberation-fonts/blob/main/LICENSE">SIL Open Font License 1.1</a>.
+    </main>
+</body>
+
+</html>
